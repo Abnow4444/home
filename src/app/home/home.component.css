@@ -1,0 +1,20 @@
+#homeCard{
+    padding-top: 3%;
+}
+
+#homeCardBox{
+    background-color: bisque
+}
+
+.customButton{
+    width: 20%;
+}
+
+.externalButton{
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#professionDesc{
+    font-weight: lighter;
+}
