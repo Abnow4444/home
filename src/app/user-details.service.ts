@@ -23,14 +23,21 @@ export class UserDetailsService implements OnInit{
   // updateDetails(city: any, continent: any, country: any, latitude: any, longitude: any, state: any, ip: any){
   //   this.http.post(this.visitorUrl, {city: city, continent: continent, country: country, latitude: latitude, longitude: longitude, state: state, ip: ip}, {headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe();
   // }
-  updateDetails(ip: any){
-    this.http.post(this.visitorUrl, {ip: ip}, {headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe();
+  insertDetails(ip: any, latestDate: any){
+    this.http.post(this.visitorUrl, {ip: ip, dateVisited: latestDate}, {headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe();
   }
 
   retrieveUserDBDetails(){
     return this.http.get(this.visitorUrl);
   }
 
+  // updateContent(date: any){
+  //   this.http.put(this.visitorUrl, {dateVisited: 'abc'}, {headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe({
+  //     next: data => {
+  //       console.log('abc:' + data);
+  //     }
+  //   })
+  // }
 }
 
 
