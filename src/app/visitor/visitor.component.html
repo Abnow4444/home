@@ -1,21 +1,21 @@
 <div class="card-deck">
   <div class="row">
-    <h2 class="text-white">Total Visitors: {{visitorData?.length}}<span *ngIf = "!visitorData" class="spinner-border spinner-border-sm text-white"></span></h2>
+    <h2 class="text-white">Total Visitors: {{visitorData?.length}}<span *ngIf = "!visitorData" class="spinner-border spinner-border-sm text-white"></span><button class="btn btn-outline-secondary text-white" style="margin-left: 10px" (click) = "updateDetails()">refresh</button></h2>
   </div>
-    <div class="card" *ngFor = "let u of visitorData; let i = index">
+    <div class="card mb-2" *ngFor = "let u of visitorData; let i = index">
       <div class="card-header bg-dark text-white border border-white">
         <b>User ID:</b> {{i+1}}
       </div>
       <div class="card-body bg-dark text-white">
         <div class="row">
           <div class="col-lg-6">
-              <b>City:</b> {{u.city}}<br>
+              <!-- <b>City:</b> {{u.city}}<br>
               <b>Continent:</b> {{u.continent}}<br>
               <b>Country:</b> {{u.country}}<br>
-              <b>State:</b> {{u.state}}<br>
-              <b>Ip:</b> {{u.ip}}<br>
-              <b>Latitude:</b> {{u.latitude}}<br>
-              <b>Longitude:</b> {{u.longitude}}
+              <b>State:</b> {{u.state}}<br> -->
+              <b>IP:</b> {{u.ip}}<br>
+              <!-- <b>Latitude:</b> {{u.latitude}}<br>
+              <b>Longitude:</b> {{u.longitude}} -->
           </div>
           <div class="col-lg-6">
           </div>
