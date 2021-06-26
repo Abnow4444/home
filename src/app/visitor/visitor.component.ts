@@ -21,7 +21,6 @@ export class VisitorComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateDBDetails();
-    this.getVisitorData();
   }
 
   updateDBDetails(): void{
@@ -32,14 +31,15 @@ export class VisitorComponent implements OnInit {
             next: data=>{
               this.checkUserObj = data;
               this.userObj = res;
-              this.len = this.checkUserObj.filter((x: UserObj)  => x.ip == this.userObj.ip).length;
-              this.checkUserObj.filter((x: UserObj)  => x.ip == this.userObj.ip)[0].dateVisited = new Date();
-              // console.log(this.checkUserObj.filter((x: UserObj)  => x.ip == this.userObj.ip)[0].dateVisited);
-              // this.userDetails.updateContent(new Date());
-              if(this.len === 0){
-                this.userService.insertDetails(this.userObj.ip, new Date());
-                // this.userService.updateDetails(this.userObj.geoplugin_city, this.userObj.geoplugin_continentName, this.userObj.geoplugin_countryName, this.userObj.geoplugin_latitude, this.userObj.geoplugin_longitude, this.userObj.geoplugin_region, this.userObj.geoplugin_request)
+              this.xObj = this.checkUserObj.filter((x: UserObj) => x.ip == this.userObj.ip);
+              this.len = this.xObj.length;
+              if(this.len !== 0){
+                this.putDBDetails(this.xObj[0].ip , (new Date()).toLocaleString(), Number(this.xObj[0]?.ID));
               }
+              if(this.len === 0){
+                this.userService.insertDetails(this.userObj.ip, (new Date()).toLocaleString(), this.checkUserObj.length+1);
+              }
+              this.getVisitorData();
             },
             error: err => {
               console.log(err);
@@ -68,8 +68,8 @@ export class VisitorComponent implements OnInit {
     })
   }
 
-  putDBDetails(): void{
-
+  putDBDetails(ip:any, latestDate: any, id: number): void{
+    this.userService.updateContent(ip, latestDate, id-1);
   }
 
 }
